@@ -8,11 +8,8 @@ const Hero: React.FC = () => {
       {/* Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-dark-900/40 z-10" />
-        {/* Usando img tag direta para garantir que a imagem apareça */}
-        <img 
-          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=2074"
-          alt="Barber Shop Interior"
-          className="w-full h-full object-cover object-center transform scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]"
+        <div 
+          className="w-full h-full bg-hero-pattern bg-cover bg-center bg-no-repeat transform scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]"
           style={{ animationDuration: '20s' }}
         />
       </div>

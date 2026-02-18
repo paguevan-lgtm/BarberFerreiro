@@ -16,33 +16,24 @@ const Locations: React.FC = () => {
           {LOCATIONS.map((location, index) => (
             <motion.div
               key={location.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row group"
+              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row"
             >
-              {/* Image/Map Side - Modified to show Map */}
-              <div className="w-full md:w-1/2 h-64 md:h-auto relative min-h-[300px]">
-                 {/* Google Maps Embed iframe (Functional without API Key using embed) */}
-                 <iframe 
-                   width="100%" 
-                   height="100%" 
-                   frameBorder="0" 
-                   scrolling="no" 
-                   marginHeight={0} 
-                   marginWidth={0} 
-                   src={`https://maps.google.com/maps?q=${encodeURIComponent(location.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-                   className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
-                   style={{ filter: 'invert(90%) hue-rotate(180deg)' }} 
-                   title={`Mapa ${location.name}`}
-                 ></iframe>
-                 {/* Overlay para facilitar clique em dispositivos touch se necessario, ou apenas estilo */}
-                 <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay pointer-events-none"></div>
+              {/* Image Side */}
+              <div className="w-full md:w-2/5 h-64 md:h-auto relative">
+                <img 
+                  src={location.image} 
+                  alt={location.name}
+                  className="w-full h-full object-cover absolute inset-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 to-transparent md:bg-gradient-to-r" />
               </div>
 
               {/* Content Side */}
-              <div className="p-8 w-full md:w-1/2 flex flex-col justify-center">
+              <div className="p-8 w-full md:w-3/5 flex flex-col justify-center">
                 <h3 className="text-2xl font-bold text-white mb-2">{location.name}</h3>
                 <div className="w-12 h-1 bg-gold-500 mb-6 rounded-full"></div>
 
@@ -71,13 +62,13 @@ const Locations: React.FC = () => {
                    </ul>
 
                    <a 
-                     href={`https://maps.google.com/?q=${encodeURIComponent(location.address)}`}
+                     href={location.mapLink}
                      target="_blank"
                      rel="noopener noreferrer"
                      className="inline-flex items-center justify-center w-full gap-2 bg-white/5 hover:bg-gold-500 hover:text-dark-900 text-white py-3 rounded-xl transition-all font-medium border border-white/10 hover:border-transparent"
                    >
                      <ExternalLink size={18} />
-                     Abrir no Google Maps
+                     Ver no Google Maps
                    </a>
                 </div>
               </div>
