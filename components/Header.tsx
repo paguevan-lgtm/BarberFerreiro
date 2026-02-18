@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Scissors } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS } from '../constants';
-
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -31,13 +30,22 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between">
-            {/* LOGO IMAGE */}
+            {/* LOGO FERREIRO BARBER SHOP - Matched to Image */}
             <div className="flex items-center gap-3 group cursor-pointer z-50">
-              <img 
-                src="/logo.png" 
-                alt="Ferreiro Barber Shop" 
-                className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]"
-              />
+              {/* Yellow Box with Scissors */}
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gold-500 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.4)] transform group-hover:rotate-6 transition-transform duration-300">
+                <Scissors className="text-black w-6 h-6 md:w-7 md:h-7 rotate-[-90deg]" strokeWidth={2.5} />
+              </div>
+              
+              {/* Text Part */}
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-xl md:text-2xl tracking-wide text-white drop-shadow-sm">
+                  FERREIRO
+                </span>
+                <span className="text-[0.6rem] md:text-[0.65rem] tracking-[0.2em] text-gold-500 font-bold uppercase">
+                  Barber Shop
+                </span>
+              </div>
             </div>
 
             {/* Desktop Nav */}
