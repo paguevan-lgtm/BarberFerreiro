@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scissors, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
@@ -14,17 +14,11 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-start">
              {/* Logo Match with Header */}
              <div className="flex items-center gap-3 mb-6">
-               <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                 <Scissors className="text-black w-6 h-6 rotate-[-90deg]" strokeWidth={2.5} />
-               </div>
-               <div className="flex flex-col leading-none">
-                 <span className="font-display font-bold text-xl tracking-wider text-white">
-                   FERREIRO
-                 </span>
-                 <span className="text-[0.6rem] tracking-[0.2em] text-gold-500 font-bold uppercase">
-                   Barber Shop
-                 </span>
-               </div>
+               <img 
+                 src="./logo.png" 
+                 alt="Ferreiro Barber Shop" 
+                 className="h-12 w-auto object-contain opacity-90"
+               />
             </div>
             
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
