@@ -68,16 +68,17 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     const selectedLocation = LOCATIONS.find(l => l.name === formData.unit);
     const phoneNumber = selectedLocation?.phone.replace(/\D/g, '') || '5511999999999';
 
-    const servicesList = selectedServices.map(s => `• ${s.name} (${s.price})`).join('%0A');
+    // Using simple dash instead of bullets or emojis for maximum compatibility
+    const servicesList = selectedServices.map(s => `- ${s.name} (${s.price})`).join('%0A');
     const total = getTotalPrice();
 
     const message = `Olá, gostaria de agendar um horário!%0A%0A` +
-      `📍 *Unidade:* ${formData.unit}%0A` +
-      `📅 *Horário:* ${formData.time}%0A` +
-      `✂️ *Serviços:*%0A${servicesList}%0A` +
-      `💰 *Total Estimado:* ${total}%0A` +
-      `👤 *Nome:* ${formData.name}%0A` +
-      `📝 *Obs:* ${formData.obs || 'Nenhuma'}`;
+      `*Unidade:* ${formData.unit}%0A` +
+      `*Horário:* ${formData.time}%0A` +
+      `*Serviços:*%0A${servicesList}%0A` +
+      `*Total Estimado:* ${total}%0A` +
+      `*Nome:* ${formData.name}%0A` +
+      `*Obs:* ${formData.obs || 'Nenhuma'}`;
 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     onClose();
