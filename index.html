@@ -1,61 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ferreiro Barber | Estilo e Tradição</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Oswald', 'sans-serif'],
-            },
-            colors: {
-              gold: {
-                400: '#D4AF37',
-                500: '#C5A028',
-                600: '#B08D22',
-              },
-              dark: {
-                900: '#111111',
-                800: '#1A1A1A',
-                700: '#252525',
-              }
-            },
-            backgroundImage: {
-              'hero-pattern': "url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=2074')",
-              'texture': "url('https://www.transparenttextures.com/patterns/cubes.png')",
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        background-color: #111111;
-        color: #f3f4f6;
-      }
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #1a1a1a;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #D4AF37;
-      }
-    </style>
   <script type="importmap">
 {
   "imports": {
@@ -63,12 +11,15 @@
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
     "lucide-react": "https://esm.sh/lucide-react@^0.574.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.34.1"
+    "framer-motion": "https://esm.sh/framer-motion@^12.34.1",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

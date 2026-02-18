@@ -81,12 +81,11 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-// Placeholder addresses based on user prompt asking for 2 addresses.
 export const LOCATIONS: LocationInfo[] = [
   {
     id: '1',
     name: 'Unidade Matriz',
-    address: 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP', // Placeholder
+    address: 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP', 
     phone: '(11) 99999-9999',
     mapLink: 'https://goo.gl/maps/placeholder1',
     image: 'https://images.unsplash.com/photo-1503951914875-befbb7135952?auto=format&fit=crop&q=80&w=1000',
@@ -94,7 +93,7 @@ export const LOCATIONS: LocationInfo[] = [
   {
     id: '2',
     name: 'Unidade Centro',
-    address: 'Rua Augusta, 500 - Consolação, São Paulo - SP', // Placeholder
+    address: 'Rua Augusta, 500 - Consolação, São Paulo - SP', 
     phone: '(11) 98888-8888',
     mapLink: 'https://goo.gl/maps/placeholder2',
     image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=1000',
