@@ -18,19 +18,17 @@
             },
             colors: {
               gold: {
+                300: '#EEDC82',
                 400: '#D4AF37',
                 500: '#C5A028',
                 600: '#B08D22',
               },
               dark: {
+                950: '#0a0a0a',
                 900: '#111111',
                 800: '#1A1A1A',
                 700: '#252525',
               }
-            },
-            backgroundImage: {
-              'hero-pattern': "url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=2074')",
-              'texture': "url('https://www.transparenttextures.com/patterns/cubes.png')",
             }
           }
         }
@@ -41,16 +39,20 @@
         background-color: #111111;
         color: #f3f4f6;
       }
+      ::selection {
+        background-color: #D4AF37;
+        color: #111;
+      }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
-        width: 10px;
+        width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #1a1a1a;
+        background: #111;
       }
       ::-webkit-scrollbar-thumb {
         background: #333;
-        border-radius: 5px;
+        border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #D4AF37;
