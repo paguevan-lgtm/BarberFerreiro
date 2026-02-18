@@ -96,7 +96,7 @@ export const LOCATIONS: LocationInfo[] = [
     address: 'Av. São João, 1312 - República, São Paulo - SP',
     phone: '(13) 99603-3433',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Av.+São+João,+1312+-+República,+São+Paulo+-+SP',
-    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://i.imgur.com/4rFpVxa.jpeg',
   },
 ];
 
