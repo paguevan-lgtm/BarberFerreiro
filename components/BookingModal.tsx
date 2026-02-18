@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, Clock, Scissors, User, Calendar, CheckCircle, ChevronLeft, Trash2 } from 'lucide-react';
+import { X, MapPin, Clock, Scissors, User, Calendar, CheckCircle, ChevronLeft } from 'lucide-react';
 import { LOCATIONS, SERVICES } from '../constants';
 import { Service } from '../types';
 
@@ -9,14 +9,13 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
-// Mock available times
 const AVAILABLE_TIMES = [
   '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'
 ];
 
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
-  const [direction, setDirection] = useState(0); // For slide animation direction
+  const [direction, setDirection] = useState(0); 
   
   const [formData, setFormData] = useState({
     unit: '',
@@ -66,19 +65,24 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
   const handleSendToWhatsApp = () => {
     const selectedLocation = LOCATIONS.find(l => l.name === formData.unit);
-    const phoneNumber = selectedLocation?.phone.replace(/\D/g, '') || '5511999999999';
+    const phoneNumber = selectedLocation?.phone.replace(/\D/g, '') || '5513996033433';
 
-    // Using simple dash instead of bullets or emojis for maximum compatibility
-    const servicesList = selectedServices.map(s => `- ${s.name} (${s.price})`).join('%0A');
+    // Formatação elegante da lista de serviços com emojis
+    const servicesList = selectedServices.map(s => `  🔹 *${s.name}*`).join('%0A');
     const total = getTotalPrice();
 
-    const message = `Olá, gostaria de agendar um horário!%0A%0A` +
-      `*Unidade:* ${formData.unit}%0A` +
-      `*Horário:* ${formData.time}%0A` +
-      `*Serviços:*%0A${servicesList}%0A` +
-      `*Total Estimado:* ${total}%0A` +
-      `*Nome:* ${formData.name}%0A` +
-      `*Obs:* ${formData.obs || 'Nenhuma'}`;
+    // Mensagem padronizada e profissional
+    const message = `✂️ *SOLICITAÇÃO DE AGENDAMENTO* ✂️%0A` +
+      `*FERREIRO BARBER SHOP*%0A` +
+      `________________________________%0A%0A` +
+      `👤 *CLIENTE:* ${formData.name.toUpperCase()}%0A` +
+      `📍 *UNIDADE:* ${formData.unit}%0A` +
+      `⏰ *HORÁRIO:* ${formData.time}%0A%0A` +
+      `💈 *SERVIÇOS SELECIONADOS:*%0A${servicesList}%0A%0A` +
+      `💰 *TOTAL ESTIMADO:* ${total}%0A` +
+      `________________________________%0A%0A` +
+      `📝 *OBSERVAÇÕES:*%0A${formData.obs || 'Nenhuma observação informada.'}%0A%0A` +
+      `_Por favor, confirme a disponibilidade deste horário._`;
 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     onClose();
@@ -101,7 +105,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  // Animation variants
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 50 : -50,
@@ -121,7 +124,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          {/* Backdrop with Blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -130,14 +132,12 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
           />
 
-          {/* Modal Container */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative bg-[#121212] w-full max-w-md rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden flex flex-col max-h-[90vh]"
           >
-            {/* Header / Progress */}
             <div className="px-6 pt-6 pb-4 bg-[#121212] z-20 relative">
               <div className="flex justify-between items-center mb-6">
                  <div className="flex flex-col">
@@ -153,7 +153,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                  </button>
               </div>
 
-              {/* Step Indicator */}
               <div className="flex items-center gap-2">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="flex-1 h-1 rounded-full bg-dark-800 overflow-hidden relative">
@@ -171,11 +170,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* Content Area */}
             <div className="flex-1 overflow-y-auto custom-scrollbar relative px-6 py-2">
               <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-                
-                {/* STEP 1: UNITS */}
                 {step === 1 && (
                   <motion.div
                     key="step1"
@@ -223,7 +219,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                   </motion.div>
                 )}
 
-                {/* STEP 2: TIME */}
                 {step === 2 && (
                   <motion.div
                     key="step2"
@@ -274,7 +269,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                   </motion.div>
                 )}
 
-                {/* STEP 3: SERVICES (MULTI) & DETAILS */}
                 {step === 3 && (
                   <motion.div
                     key="step3"
@@ -284,9 +278,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                     animate="center"
                     exit="exit"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="space-y-6 py-2 pb-24" // Extra padding for fixed bottom button
+                    className="space-y-6 py-2 pb-24"
                   >
-                    {/* Summary Header */}
                     <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                         <div className="shrink-0 bg-dark-800/50 border border-white/5 rounded-lg px-3 py-2 flex items-center gap-2">
                             <MapPin size={14} className="text-gold-500" />
@@ -301,7 +294,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         </button>
                     </div>
 
-                    {/* Services List (Multi-Select) */}
                     <div>
                         <div className="flex items-center justify-between mb-3">
                           <label className="text-sm font-bold text-white">Selecione os Serviços</label>
@@ -342,7 +334,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                             })}
                         </div>
                         
-                        {/* Total Display */}
                         {selectedServices.length > 0 && (
                           <div className="mt-4 p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
                              <span className="text-sm text-gray-400">Total Estimado</span>
@@ -351,7 +342,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         )}
                     </div>
 
-                    {/* Form Fields */}
                     <div className="space-y-4 pt-2">
                         <div>
                             <label className="block text-xs uppercase tracking-wider text-gray-500 font-bold mb-2">Seus Dados</label>
@@ -385,7 +375,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
               </AnimatePresence>
             </div>
 
-            {/* Bottom Actions */}
             <div className="p-6 bg-[#121212] border-t border-white/5 z-20">
                 {step === 1 && (
                      <p className="text-center text-gray-500 text-sm">Selecione uma unidade para continuar</p>

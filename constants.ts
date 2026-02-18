@@ -86,18 +86,16 @@ export const LOCATIONS: LocationInfo[] = [
     id: '1',
     name: 'Unidade Vila Maria',
     address: 'R. Curuçá, 1084 - Vila Maria, São Paulo - SP',
-    phone: '(11) 99999-9999',
+    phone: '(13) 99603-3433',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=R.+Curuçá,+1084+-+Vila+Maria,+São+Paulo+-+SP',
-    // Imagem confiável de barbearia
-    image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://i.imgur.com/0q4p3ie.jpeg',
   },
   {
     id: '2',
     name: 'Unidade República',
     address: 'Av. São João, 1312 - República, São Paulo - SP',
-    phone: '(11) 98888-8888',
+    phone: '(13) 99603-3433',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Av.+São+João,+1312+-+República,+São+Paulo+-+SP',
-    // Imagem Corrigida: Interior de Barbearia Vintage Real (Cadeiras de couro e espelhos)
     image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1000&auto=format&fit=crop',
   },
 ];
@@ -108,4 +106,4 @@ export const OPERATING_HOURS: OperatingHours[] = [
   { day: 'Domingo', hours: 'Fechado' },
 ];
 
-export const WHATSAPP_LINK = "https://wa.me/5511999999999";
+export const WHATSAPP_LINK = "https://wa.me/5513996033433";

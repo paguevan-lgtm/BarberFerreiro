@@ -30,14 +30,12 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between">
-            {/* LOGO FERREIRO BARBER SHOP - Matched to Image */}
+            {/* LOGO FERREIRO BARBER SHOP */}
             <div className="flex items-center gap-3 group cursor-pointer z-50">
-              {/* Yellow Box with Scissors */}
               <div className="w-10 h-10 md:w-12 md:h-12 bg-gold-500 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.4)] transform group-hover:rotate-6 transition-transform duration-300">
                 <Scissors className="text-black w-6 h-6 md:w-7 md:h-7 rotate-[-90deg]" strokeWidth={2.5} />
               </div>
               
-              {/* Text Part */}
               <div className="flex flex-col leading-none">
                 <span className="font-display font-bold text-xl md:text-2xl tracking-wide text-white drop-shadow-sm">
                   FERREIRO
@@ -71,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               </button>
             </nav>
 
-            {/* Mobile Menu Button - Improved Visibility */}
+            {/* Mobile Menu Button */}
             <div className="md:hidden z-50">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -115,10 +113,11 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
             animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-dark-950/95 md:hidden flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-dark-950/95 md:hidden flex flex-col"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
-            <div className="w-full h-full flex flex-col items-center justify-center space-y-8 p-6 relative z-10">
+            
+            <div className="flex-1 flex flex-col items-center justify-center space-y-6 p-6 relative z-10 pt-20">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.name}
@@ -127,7 +126,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.3 }}
-                  className="w-full text-center py-2 text-4xl font-display font-bold text-white hover:text-gold-500 transition-colors tracking-tight"
+                  className="w-full text-center py-2 text-3xl font-display font-bold text-white hover:text-gold-500 transition-colors tracking-tight"
                 >
                   {link.name}
                 </motion.a>
@@ -140,11 +139,25 @@ const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                   setIsOpen(false);
                   onOpenBooking();
                 }}
-                className="mt-10 bg-gold-500 text-dark-900 px-12 py-5 rounded-2xl font-bold text-xl uppercase tracking-widest shadow-[0_10px_30px_rgba(212,175,55,0.3)] w-full max-w-xs text-center hover:bg-gold-400 transition-colors"
+                className="mt-6 bg-gold-500 text-dark-900 px-12 py-5 rounded-2xl font-bold text-xl uppercase tracking-widest shadow-[0_10px_30px_rgba(212,175,55,0.3)] w-full max-w-xs text-center hover:bg-gold-400 transition-colors"
               >
-                Agendar
+                Agendar Agora
               </motion.button>
             </div>
+
+            {/* Credit mention to Grupo CBL inside Menu */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="p-8 flex flex-col items-center relative z-10 border-t border-white/5 bg-black/20"
+            >
+              <span className="text-[10px] text-gray-500 uppercase tracking-[0.3em] mb-2 font-bold">Desenvolvido por</span>
+              <div className="flex flex-col items-center leading-none">
+                <span className="text-white font-sans font-bold text-lg tracking-tighter">GRUPO CBL</span>
+                <span className="text-gold-500/50 font-sans font-bold text-[0.6rem] tracking-[0.2em] uppercase">Inovação & Tech</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
